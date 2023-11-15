@@ -1,11 +1,22 @@
+import { BlurView } from 'expo-blur';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { useEffect } from 'react';
+import { Dimensions, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import Services from './services';
+const { width, height } = Dimensions.get('screen')
 export default function App() {
+
+  useEffect(() => {
+    Services.getUser
+  }, [])
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
+      <ImageBackground style={{ width: width, height: height }} source={require('./assets/pi.jpg')}>
+        <BlurView tint='dark' intensity={100} style={{ width: width, height: height }} >
+
+        </BlurView>
+      </ImageBackground>
     </View>
   );
 }
