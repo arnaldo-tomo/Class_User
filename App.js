@@ -31,7 +31,7 @@ export default function App() {
             <Text style={{ color: 'white', fontWeight: 'bold', marginTop: 50, padding: 10, justifyContent: 'center', alignItems: 'center' }}>Carregando....</Text> :
             <FlatList data={userData} numColumns={1}
               renderItem={({ item }) =>
-                <TouchableOpacity onPress={() => Services.set(item)}>
+                <TouchableOpacity onPress={() => Services.set(item, item.id)}>
                   <Text style={{ color: 'white', fontWeight: 'bold', marginTop: 50, padding: 10 }} key={item.id} >Codigo:{item.id}</Text>
                 </TouchableOpacity>
               }
