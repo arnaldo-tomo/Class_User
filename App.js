@@ -1,7 +1,7 @@
 import { BlurView } from 'expo-blur';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { Dimensions, ImageBackground, StyleSheet, Text, View, FlatList } from 'react-native';
+import { Dimensions, ImageBackground, StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import Services from './services';
 export default function App() {
   const [userData, setUserData] = useState(null);
@@ -20,17 +20,23 @@ export default function App() {
 
     fetchData();
   }, [])
+
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
       <ImageBackground style={{ width: width, height: height }} source={require('./assets/pi.jpg')}>
         <BlurView tint='dark' intensity={100} style={{ width: width, height: height }} >
 
-          <FlatList data={userData} numColumns={4}
-            renderItem={({ item }) =>
-              <Text style={{ color: 'white', fontWeight: 'bold', marginTop: 50, padding: 10 }} key={item.id}>Codigo:{item.id}</Text>
-            }
-          />
+          {userData == null ?
+            <Text style={{ color: 'white', fontWeight: 'bold', marginTop: 50, padding: 10, justifyContent: 'center', alignItems: 'center' }}>Carregando....</Text> :
+            <FlatList data={userData} numColumns={1}
+              renderItem={({ item }) =>
+                <TouchableOpacity onPress={() => Services.set(item)}>
+                  <Text style={{ color: 'white', fontWeight: 'bold', marginTop: 50, padding: 10 }} key={item.id} >Codigo:{item.id}</Text>
+                </TouchableOpacity>
+              }
+            />
+          }
 
         </BlurView>
       </ImageBackground>
