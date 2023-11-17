@@ -1,29 +1,49 @@
-import { Alert } from "react-native";
+class services {
 
-class Services {
     static async getUser() {
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
-                method: 'GET',
-            });
-
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
+            const response = await fetch('https://jsonplaceholder.typicode.com/todos')
             const data = await response.json();
-
             return data;
         } catch (error) {
-            console.error('Error fetching data:', error);
+
+            console.error("msm", error);
         }
+
+    }
+
+    static async SaveUser(user) {
+        try {
+            const response = await post('https://jsonplaceholder.typicode.com/todos', user)
+            const data = await response.json();
+            return data;
+        } catch (error) {
+
+            console.error("msm", error);
+        }
+
     }
 
 
-    static async set(name) {
-        Alert.alert('ola');
-        console.log(name);
+    static async DeleteUser(user) {
+        try {
+            const response = await post('https://jsonplaceholder.typicode.com/todos', user)
+            const data = await response.json();
+            return data;
+        } catch (error) {
+
+            console.error("msm", error);
+        }
+
+    }
+
+    static set(item) {
+        this.message(item);
+    }
+
+
+    static message(item) {
+        console.log('This Message is Static', item.title)
     }
 }
-
-export default Services;
+export default services;
