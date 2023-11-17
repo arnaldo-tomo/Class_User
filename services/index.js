@@ -1,3 +1,5 @@
+import { Alert } from "react-native";
+
 class Services {
     static async getUser() {
         try {
@@ -10,14 +12,18 @@ class Services {
             }
 
             const data = await response.json();
-            console.log('Succesfuly', data);
 
             return data;
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     }
+
+
+    static async set(name) {
+        Alert.alert('ola');
+        console.log(name);
+    }
 }
 
 export default Services;
-
