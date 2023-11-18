@@ -24,7 +24,7 @@ class services {
 
     }
 
-
+    // comentarrio
     static async DeleteUser(user) {
         try {
             const response = await post('https://jsonplaceholder.typicode.com/todos', user)
