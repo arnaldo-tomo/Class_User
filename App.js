@@ -28,7 +28,7 @@ export default function App() {
 
         <StatusBar style="light" />
         <ImageBackground style={{ width: width, height: height }} source={require('./assets/home.jpg')} >
-          {/* <BlurView tint='dark' intensity={100} style={{ width: width, height: height }} > */}
+          <BlurView tint='dark' intensity={100} style={{ width: width, height: height }} >
           <LinearGradient
             style={{
               height: height,
@@ -51,7 +51,7 @@ export default function App() {
               }
             />
           }
-          {/* </BlurView> */}
+          </BlurView>
         </ImageBackground>
       </SafeAreaView>
     </View>
