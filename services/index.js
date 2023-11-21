@@ -2,8 +2,9 @@ class services {
 
     static async getUser() {
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/todos')
+            const response = await fetch('https://dummyjson.com/products')
             const data = await response.json();
+            // console.log(data)
             return data;
         } catch (error) {
 
@@ -43,7 +44,7 @@ class services {
 
 
     static message(item) {
-        console.log('This Message is Static', item.title)
+        console.log('cliked', item.title)
     }
 }
 export default services;
